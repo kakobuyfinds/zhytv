@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#101c36">
+  <title>BaseTao spreadsheet | Productlinks, maten en QC-foto’s</title>
+  <meta name="description" content="Gebruik de BaseTao spreadsheet als zoekgids voor sneakers, kleding en accessoires. Vergelijk productlinks, maten, QC-foto’s en verzendkosten.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="BaseTao spreadsheet | Productlinks, maten en QC-foto’s">
+  <meta property="og:description" content="Vind je categorie en gebruik de koopgids om varianten, QC-foto’s en verzendkosten te vergelijken.">
+  <!-- Zoekonderzoek: de rechtstreekse Google-resultatenpagina gaf een tussenscherm.
+       De onderstaande tien domeinen komen uit beschikbare webzoekresultaten; de Google-volgorde is niet vastgesteld.
+       basetaotrade.com en basetaoimport.com: categorieën en prijsweergave.
+       sopel.fit en basetao.top: productlinks, categorieën en varianten.
+       basetao-spreadsheet.org en basetao.sbs: redactioneel productonderzoek en koopgidsen.
+       basetao.cfd en htvgate.yinaojiyi.com: productlijsten en winkelstappen.
+       taofind.com en basetaosheet.beer: valuta, kostenvergelijking en spreadsheetgebruik.
+       Secundaire zoektermen: BaseTao koopgids, BaseTao productlinks, BaseTao QC-foto’s, BaseTao verzendkosten. -->
+  <style>
+    :root{color-scheme:light;--navy:#101c36;--ink:#172642;--muted:#465574;--paper:#f2f5fc;--line:#cbd5e7;--accent:#e1fa64}
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.6 system-ui,sans-serif}
+    h1,h2,h3,p,figure{margin:0}
+    h1,h2,h3{line-height:1.15;text-wrap:balance}
+    h1{font-size:clamp(2.65rem,7.5vw,6.15rem);letter-spacing:-.072em;overflow-wrap:anywhere}
+    h2{font-size:clamp(1.8rem,4vw,2.85rem);letter-spacing:-.045em}
+    h3{font-size:1.22rem;letter-spacing:-.025em}
+    p+p{margin-top:.75rem}
+    a{color:inherit}
+    :focus-visible{outline:3px solid #2e59de;outline-offset:3px}
+    img{display:block;width:100%;height:auto;background:#e9edf5;color:var(--ink)}
+    .wrap{width:min(72rem,calc(100% - 2rem));margin-inline:auto}
+    .top{background:var(--navy);color:white}
+    .bar{min-height:4.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{font-size:1.3rem;font-weight:800;text-decoration:none;white-space:nowrap}
+    .bar p{color:#d5def4;text-align:right;font-size:.85rem}
+    .kicker{font-size:.74rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+    .catalog{padding-block:1rem 1.2rem}
+    .catalog .kicker{margin-bottom:.6rem}
+    .cats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.4rem;margin:0;padding:0;list-style:none}
+    .cats a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:.35rem .45rem;background:white;border:1px solid var(--line);text-align:center;text-decoration:none;font-size:.88rem;font-weight:700;line-height:1.2}
+    .cats a:hover,.cta:hover{background:#f0ffac;color:var(--navy)}
+    .hero{display:grid;grid-template-columns:1.42fr 1fr;align-items:center;background:var(--navy);color:white}
+    .hero-copy{padding:clamp(1.3rem,4.5vw,3.5rem)}
+    .hero-copy .kicker{margin-bottom:1rem;color:var(--accent)}
+    .lede{max-width:48ch;margin-top:1.25rem;color:#e2eaff}
+    .cta{display:inline-block;margin-top:1.25rem;padding:.68rem 1rem;background:var(--accent);color:var(--navy);font-weight:800;text-decoration:none}
+    .hero figure{padding:1rem}
+    .hero img{aspect-ratio:5/4;object-fit:cover}
+    figcaption{padding:.45rem .6rem;font-size:.8rem;line-height:1.35}
+    .hero figcaption{padding-inline:0;color:#d5def4}
+    .section{margin-block:clamp(2.5rem,6vw,4.5rem)}
+    .section h2{margin-bottom:.8rem}
+    .intro{max-width:68ch;color:var(--muted)}
+    .lookbook{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.6rem;margin-top:1rem}
+    .lookbook figure{overflow:hidden;background:white;border:1px solid var(--line)}
+    .lookbook img{aspect-ratio:1;object-fit:contain}
+    .articles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.2rem}
+    .articles article{background:white;border-top:4px solid #3159c9;padding:1rem}
+    .articles .kicker{color:#374d84;margin-bottom:.45rem}
+    .articles h3{margin-bottom:.75rem}
+    .table-scroll{overflow-x:auto;margin-top:1rem;background:white;border:1px solid var(--line)}
+    table{width:100%;min-width:38rem;border-collapse:collapse;text-align:left}
+    caption{padding:.75rem;text-align:left;font-weight:750}
+    th,td{padding:.65rem .75rem;border-top:1px solid var(--line);vertical-align:top}
+    thead{background:#e0e9ff}
+    .faq{max-width:52rem}
+    details{border-top:1px solid var(--line)}
+    details:last-child{border-bottom:1px solid var(--line)}
+    summary{padding:.8rem 0;cursor:pointer;font-weight:750}
+    details p{padding:0 0 1rem;color:var(--muted);max-width:66ch}
+    footer{background:var(--navy);color:#e2eaff;padding:1.5rem 0}
+    footer p{margin-top:.35rem}
+    @media(max-width:54rem){.cats{grid-template-columns:repeat(4,minmax(0,1fr))}.lookbook{grid-template-columns:repeat(3,minmax(0,1fr))}.articles{grid-template-columns:1fr}}
+    @media(max-width:40rem){.hero{grid-template-columns:1fr}.hero figure{padding-top:0}.hero img{aspect-ratio:16/9}.cats,.lookbook{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "#koopgids",
+        "name": "BaseTao spreadsheet | Productlinks, maten en QC-foto’s",
+        "description": "Gebruik de BaseTao spreadsheet als zoekgids voor sneakers, kleding en accessoires. Vergelijk productlinks, maten, QC-foto’s en verzendkosten.",
+        "inLanguage": "nl",
+        "about": {"@type": "Thing", "name": "BaseTao spreadsheet"},
+        "hasPart": {"@id": "#vragen"}
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "#vragen",
+        "name": "Veelgestelde vragen",
+        "inLanguage": "nl",
+        "mainEntity": [
+          {"@type":"Question","name":"Wat is een BaseTao spreadsheet?","acceptedAnswer":{"@type":"Answer","text":"Een BaseTao spreadsheet is een overzicht waarin je productlinks, varianten en aankoopnotities kunt ordenen. Deze gids helpt je om zelf zo’n lijst op te bouwen."}},
+          {"@type":"Question","name":"Waar openen de categorielinks?","acceptedAnswer":{"@type":"Answer","text":"De categorieknoppen openen de catalogus van cafans.com. Controleer op de productpagina welke maten en kleuren beschikbaar zijn."}},
+          {"@type":"Question","name":"Hoe controleer ik of een productlink nog werkt?","acceptedAnswer":{"@type":"Answer","text":"Open de productlink en vergelijk de verkoper, het artikelnummer en de variant met je notities. Noteer de controledatum en zet de link apart als de vermelding is gewijzigd of verdwenen."}},
+          {"@type":"Question","name":"Welke QC-foto’s zijn handig voor sneakers?","acceptedAnswer":{"@type":"Answer","text":"Vraag zo mogelijk een zijaanzicht van beide schoenen, een foto van de zolen en een detail van het maatlabel. Een foto met meetlint helpt als je de lengte van de binnenzool wilt vergelijken."}},
+          {"@type":"Question","name":"Hoe vergelijk ik verzending naar Nederland of België?","acceptedAnswer":{"@type":"Answer","text":"Kies je land en postcode in de verzendcalculator van je aanbieder. Vergelijk de offertes met dezelfde pakketafmetingen en controleer welke kosten al in het bedrag zijn inbegrepen."}}
+        ]
+      }
+    ]
+  }
+  </script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/zhytv/">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap bar">
+      <a class="brand" href="https://www.cafans.com">cafans.com</a>
+      <p>Catalogus &amp; koopgids</p>
+    </div>
+  </header>
+
+  <main class="wrap" id="koopgids">
+    <nav class="catalog" aria-label="Productcategorieën">
+      <p class="kicker">Blader op categorie</p>
+      <ul class="cats">
+        <li><a href="https://cafans.com/category-911-Shoes.html">Schoenen</a></li>
+        <li><a href="https://cafans.com/category-912-Hoodies%2FSweaters.html">Hoodies en truien</a></li>
+        <li><a href="https://cafans.com/category-913-T-Shirts.html">T-shirts</a></li>
+        <li><a href="https://cafans.com/category-914-Jackets.html">Jassen</a></li>
+        <li><a href="https://cafans.com/category-915-Pants%2FShorts.html">Broeken en shorts</a></li>
+        <li><a href="https://cafans.com/category-916-Headwear.html">Petten en mutsen</a></li>
+        <li><a href="https://cafans.com/category-917-Sets.html">Sets</a></li>
+        <li><a href="https://cafans.com/category-918-underwear%2Funderpants.html">Ondergoed</a></li>
+        <li><a href="https://cafans.com/category-919-Jersey.html">Sportshirts</a></li>
+        <li><a href="https://cafans.com/category-920-Accessories.html">Accessoires</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero" aria-labelledby="titel">
+      <div class="hero-copy">
+        <p class="kicker">Van zoekresultaat naar shortlist</p>
+        <h1 id="titel">BaseTao spreadsheet</h1>
+        <p class="lede">Kies een categorie en zet interessante productlinks naast elkaar. Met een paar vaste gegevens over maat, materiaal en verzending zie je snel welke vondsten je verder wilt bekijken.</p>
+        <a class="cta" href="https://www.cafans.com">Open de Cafans-catalogus</a>
+      </div>
+      <figure>
+        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto%2Cq_auto%3Aeco%2Cc_scale%2Cw_300%2Cu_9ddf04c7-2a9a-4d76-add1-d15af8f0263d%2Cc_scale%2Cfl_relative%2Cw_1.0%2Ch_1.0%2Cfl_layer_apply/f888b4a3-a02a-420d-93e3-cb33c3bb30ac/AIR%2BFORCE%2B1%2B%2707.png" width="1728" height="1728" loading="eager" fetchpriority="high" alt="Witte Nike Air Force 1 ’07 Texture, gezien van opzij">
+        <figcaption>Stijlreferentie · Nike Air Force 1 ’07 Texture</figcaption>
+      </figure>
+    </section>
+
+    <section class="section" aria-labelledby="referenties">
+      <h2 id="referenties">Van pasvorm tot afwerking</h2>
+      <p class="intro">Gebruik deze merkfoto’s als stijlreferentie. Let op de vorm van de klep bij een pet, de valling van een hoodie en de sluiting bij een tas of sieraad. Controleer die details vervolgens op de foto’s van de vermelding die je zelf bekijkt.</p>
+      <div class="lookbook">
+        <figure><img src="https://www.svpsports.ca/cdn/shop/files/Nike---Men_s-Club-Pull-Over-Hoodie-_FN3859-063__01.jpg?v=1762201582&amp;width=360" width="360" height="360" loading="lazy" decoding="async" alt="Grijze Nike Club Fleece-hoodie met voorzak"><figcaption>Nike Club Fleece</figcaption></figure>
+        <figure><img src="https://media.gucci.com/style/HEXFBFBFB_South_0_160_640x640/1751298339/838745_3HBC4_2600_001_100_0000_Light.jpg" width="640" height="640" loading="lazy" decoding="async" alt="Beige Gucci-pet met GG-patroon en gebogen klep"><figcaption>Gucci GG Canvas</figcaption></figure>
+        <figure><img src="https://ca.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-speedy-bandouliere-25--M46977_PM2_Front%20view.png?hei=360&amp;wid=360&amp;fmt=webp" width="360" height="360" loading="lazy" decoding="async" alt="Bruine Louis Vuitton Speedy Bandoulière 25 met monogram en lichte handvatten"><figcaption>Louis Vuitton Speedy 25</figcaption></figure>
+        <figure><img src="https://www.oliverjewellery.ca/cdn/shop/files/73134-3_360x360.jpg?v=1774969616" width="360" height="360" loading="lazy" decoding="async" alt="Zilverkleurige Hermès Chaîne d’Ancre-ring met open schakels"><figcaption>Hermès Chaîne d’Ancre</figcaption></figure>
+        <figure><img src="https://image.koibito.co.kr/product_photo/202501/1735953739_b_1_IMG_1406.JPG" width="600" height="600" loading="lazy" decoding="async" alt="Goudkleurige Dior Petit CD-ketting met een CD-hanger bezet met kristallen"><figcaption>Dior Petit CD</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="gidsen">
+      <h2 id="gidsen">Drie stappen voor je shortlist</h2>
+      <p class="intro">Begin in deze BaseTao koopgids bij de productpagina, vergelijk de uitvoering en reken daarna uit wat de bestelling kost.</p>
+      <div class="articles">
+        <article>
+          <p class="kicker">01 · Vinden</p>
+          <h3>BaseTao productlinks bijhouden</h3>
+          <p>Bewaar de originele productlink met de verkopersnaam, de modelcode en de controledatum. Zoek voor sneakers eerst op het model en de kleurvariant. Noteer bij verschillende verkopers ook de materiaalomschrijving en de status van je maat.</p>
+          <p>Controleer vóór je bestelt of dezelfde variant nog beschikbaar is. Een vergelijkbare productfoto kan bij een andere maat, kleur of uitvoering horen.</p>
+        </article>
+        <article>
+          <p class="kicker">02 · Controleren</p>
+          <h3>BaseTao QC-foto’s en maten</h3>
+          <p>QC-foto’s zijn beelden voor een kwaliteitscontrole. Vergelijk bij schoenen de lengte van de binnenzool in centimeters met een goed passend paar. Meet bij kleding de borstbreedte, mouwlengte en ruglengte op een platliggend kledingstuk en controleer hoe de verkoper heeft gemeten.</p>
+          <p>Vraag bij een pet naar de verstelbare hoofdomtrek en bij een sieraad naar de ringmaat of kettinglengte. Gebruik detailfoto’s om stiknaden, ritsen en sluitingen te bekijken. Voor merkartikelen kun je de herkomst en documentatie apart opvragen.</p>
+        </article>
+        <article>
+          <p class="kicker">03 · Doorrekenen</p>
+          <h3>BaseTao verzendkosten vergelijken</h3>
+          <p>Houd de artikelprijs, binnenlandse verzending, servicekosten en internationale verzending apart. Vergelijk bedragen in euro’s met dezelfde wisselkoers en noteer de datum van de omrekening.</p>
+          <p>Vraag voor een zending naar Nederland of België naar het pakketgewicht, de afmetingen en het eventuele volumegewicht. Bekijk per offerte of tracking, verzekering en mogelijke invoer- of afhandelingskosten zijn inbegrepen.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="werkblad">
+      <h2 id="werkblad">Voorbeeld van een vergelijkblad</h2>
+      <p class="intro">Kopieer de kolommen naar je eigen werkblad. Gebruik voor elke combinatie van verkoper en variant een eigen rij, zodat je maten en foto’s bij het juiste artikel bewaart.</p>
+      <div class="table-scroll" role="region" aria-label="Voorbeeldtabel om producten te vergelijken" tabindex="0">
+        <table>
+          <caption>Voorbeeldvelden per productcategorie</caption>
+          <thead><tr><th scope="col">Categorie</th><th scope="col">Zoekopdracht</th><th scope="col">Maat of uitvoering</th><th scope="col">Te controleren detail</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Schoenen</th><td>Witte lage sneakers</td><td>EU-maat en binnenzoollengte</td><td>Zool, maatlabel en zijaanzicht</td></tr>
+            <tr><th scope="row">Hoodies</th><td>Grijze fleecehoodie</td><td>Borstbreedte en mouwlengte</td><td>Stof, naden en boorden</td></tr>
+            <tr><th scope="row">Accessoires</th><td>Goudkleurige ketting</td><td>Kettinglengte en materiaal</td><td>Sluiting en achterkant van de hanger</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section faq" id="vragen" aria-labelledby="faq-titel">
+      <h2 id="faq-titel">Veelgestelde vragen</h2>
+      <details open><summary>Wat is een BaseTao spreadsheet?</summary><p>Een BaseTao spreadsheet is een overzicht waarin je productlinks, varianten en aankoopnotities kunt ordenen. Deze gids helpt je om zelf zo’n lijst op te bouwen.</p></details>
+      <details><summary>Waar openen de categorielinks?</summary><p>De categorieknoppen openen de catalogus van cafans.com. Controleer op de productpagina welke maten en kleuren beschikbaar zijn.</p></details>
+      <details><summary>Hoe controleer ik of een productlink nog werkt?</summary><p>Open de productlink en vergelijk de verkoper, het artikelnummer en de variant met je notities. Noteer de controledatum en zet de link apart als de vermelding is gewijzigd of verdwenen.</p></details>
+      <details><summary>Welke QC-foto’s zijn handig voor sneakers?</summary><p>Vraag zo mogelijk een zijaanzicht van beide schoenen, een foto van de zolen en een detail van het maatlabel. Een foto met meetlint helpt als je de lengte van de binnenzool wilt vergelijken.</p></details>
+      <details><summary>Hoe vergelijk ik verzending naar Nederland of België?</summary><p>Kies je land en postcode in de verzendcalculator van je aanbieder. Vergelijk de offertes met dezelfde pakketafmetingen en controleer welke kosten al in het bedrag zijn inbegrepen.</p></details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a class="brand" href="https://www.cafans.com">cafans.com</a>
+      <p>Onafhankelijke koopgids. De merkfoto’s dienen als stijlreferentie.</p>
+    </div>
+  </footer>
+</body>
+</html>
